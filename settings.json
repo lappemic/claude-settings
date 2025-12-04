@@ -6,6 +6,17 @@
   },
   "alwaysThinkingEnabled": true,
   "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ -f package.json ] && grep -q '\"typecheck\"' package.json 2>/dev/null; then npm run typecheck --silent 2>/dev/null || true; fi"
+          }
+        ]
+      }
+    ],
     "PostToolUse": [
       {
         "matcher": "Edit",

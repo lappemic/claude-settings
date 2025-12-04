@@ -46,6 +46,26 @@ import { openai } from '@ai-sdk/openai'
 - Hydration errors: Check for browser-only code in server components
 - RLS issues: Verify auth context and policy conditions
 
+## Session Management
+
+- Use `/clear` between unrelated features
+- Scope each session to one task/feature
+- Reference `@MEMORY.md` for cross-session context
+- Use `--resume` to continue previous sessions
+
+## Available Commands
+
+| Command | Purpose |
+|---------|---------|
+| `/smart-commit` | Semantic git commits |
+| `/pr` | Create pull request |
+| `/review` | Code review |
+| `/debug` | Debug helper |
+| `/refactor` | Guided refactoring |
+| `/migrate` | Database migrations |
+| `/perf` | Performance analysis |
+| `/sec` | Security audit |
+
 ## TODO / Backlog
 
 <!-- Add items to work on later -->

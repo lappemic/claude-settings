@@ -1,3 +1,10 @@
+# Workflow Pattern
+1. Explore first - read files and understand before writing
+2. Plan with "think hard" for complex tasks
+3. Implement incrementally with small diffs
+4. Review with `/review` before `/smart-commit`
+5. Use `/clear` between unrelated tasks
+
 # General Rules
 - dont start the dev server. assume it is always already running on port 3000
 - always use semantic commit messages
@@ -60,3 +67,28 @@
 - test files: `*.test.ts` or `*.spec.ts` colocated or in `__tests__/`
 - mock AI SDK with MSW or vi.mock(), mock Supabase client
 - suggest test coverage for: API routes, server actions, utility functions, critical UI flows
+
+# Security Rules
+- never commit .env, credentials, or API keys
+- sanitize all user input before database queries
+- use parameterized queries only (Supabase handles this)
+- validate with Zod on both client and server
+- check authentication before any data mutation
+
+# Error Handling
+- wrap external API calls in try/catch
+- use error boundaries for React component trees
+- log errors with context: `{ error, userId, action, timestamp }`
+- return user-friendly messages, log technical details
+
+# Performance
+- use dynamic imports for heavy components: `dynamic(() => import(...))`
+- implement virtual scrolling for lists > 50 items
+- cache with useMemo/useCallback for expensive computations
+- debounce search inputs (300ms default)
+- use Suspense boundaries for loading states
+
+# File Size Limits
+- components: max 200 lines, split by concern if larger
+- utility files: max 100 lines
+- API routes: max 150 lines, extract logic to services
