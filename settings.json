@@ -4,5 +4,29 @@
     "feature-dev@claude-code-plugins": true,
     "frontend-design@claude-code-plugins": true
   },
-  "alwaysThinkingEnabled": true
+  "alwaysThinkingEnabled": true,
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "npm run lint --fix \"$CLAUDE_TOOL_ARG_file_path\" 2>/dev/null || true",
+            "statusMessage": "Running linter..."
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "osascript -e 'display notification \"Task completed\" with title \"Claude Code\"'"
+          }
+        ]
+      }
+    ]
+  }
 }
