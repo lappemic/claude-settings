@@ -14,18 +14,20 @@ Analyze all unstaged and staged changes in the current repository and create sem
 
 3. **For each logical group**:
    - Stage only the files belonging to that group using `git add <files>`
-   - Create a semantic commit with the appropriate prefix:
-     - `feat:` for new features
-     - `fix:` for bug fixes
-     - `refactor:` for code refactoring
-     - `style:` for formatting/style changes
-     - `docs:` for documentation
-     - `test:` for test additions/changes
-     - `chore:` for maintenance tasks
-     - `perf:` for performance improvements
+   - Create a semantic commit with the appropriate prefix and scope:
+     - `feat(scope):` for new features
+     - `fix(scope):` for bug fixes
+     - `refactor(scope):` for code refactoring
+     - `style(scope):` for formatting/style changes
+     - `docs(scope):` for documentation
+     - `test(scope):` for test additions/changes
+     - `chore(scope):` for maintenance tasks
+     - `perf(scope):` for performance improvements
    - Write a concise, descriptive commit message focusing on the "why"
 
 4. **Commit message format**:
+   - Always include a scope in parentheses: `type(scope): message`
+   - Scope should be the module, component, or area affected (e.g., auth, api, ui, db, mcp, config)
    - Use lowercase after the prefix
    - Keep the first line under 72 characters
    - Add a blank line and bullet points for details if multiple files are involved
@@ -44,6 +46,6 @@ If there are changes to:
 - `README.md` (docs update)
 
 Create 3 commits:
-1. `fix: resolve session persistence issue in auth flow`
-2. `feat: add loading state to Button component`
-3. `docs: update README with new button props`
+1. `fix(auth): resolve session persistence issue`
+2. `feat(ui): add loading state to Button component`
+3. `docs(readme): update with new button props`
