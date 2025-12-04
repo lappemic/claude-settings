@@ -1,0 +1,19 @@
+# Session/cache data
+history.jsonl
+debug/
+todos/
+plans/
+session-env/
+shell-snapshots/
+file-history/
+projects/
+statsig/
+
+# Plugins (reinstall via marketplace)
+plugins/
+
+# IDE integration
+ide/
+
+# OS files
+.DS_Store
