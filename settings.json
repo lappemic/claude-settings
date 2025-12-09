@@ -1,10 +1,24 @@
 {
-  "enabledPlugins": {
-    "example-skills@anthropic-agent-skills": true,
-    "feature-dev@claude-code-plugins": true,
-    "frontend-design@claude-code-plugins": true
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch",
+      "Bash(npx prettier:*)",
+      "Bash(npm run:*)",
+      "Bash(npx eslint:*)",
+      "Bash(ls:*)",
+      "Bash(git checkout:*)",
+      "Bash(cat:*)",
+      "Bash(curl:*)",
+      "Bash(pbcopy)",
+      "Bash(find:*)",
+      "Bash(grep:*)",
+      "Bash(echo:*)",
+      "Skill(frontend-design)",
+      "Skill(frontend-design:frontend-design)",
+      "Bash(git diff:*)"
+    ]
   },
-  "alwaysThinkingEnabled": true,
   "hooks": {
     "PreToolUse": [
       {
@@ -39,5 +53,11 @@
         ]
       }
     ]
-  }
+  },
+  "enabledPlugins": {
+    "example-skills@anthropic-agent-skills": true,
+    "feature-dev@claude-code-plugins": true,
+    "frontend-design@claude-code-plugins": true
+  },
+  "alwaysThinkingEnabled": true
 }
