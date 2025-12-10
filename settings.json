@@ -16,7 +16,9 @@
       "Bash(echo:*)",
       "Skill(frontend-design)",
       "Skill(frontend-design:frontend-design)",
-      "Bash(git diff:*)"
+      "Bash(git diff:*)",
+      "Read(~/Downloads/*)",
+      "Read(/Users/mi/Downloads/*)"
     ]
   },
   "hooks": {
