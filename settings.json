@@ -18,7 +18,8 @@
       "Skill(frontend-design:frontend-design)",
       "Bash(git diff:*)",
       "Read(~/Downloads/*)",
-      "Read(/Users/mi/Downloads/*)"
+      "Read(/Users/mi/Downloads/*)",
+      "mcp__puppeteer__*"
     ]
   },
   "hooks": {
