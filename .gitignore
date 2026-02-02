@@ -8,9 +8,19 @@ shell-snapshots/
 file-history/
 projects/
 statsig/
+cache/
+paste-cache/
+stats-cache.json
+telemetry/
+
+# Task tracking (local only)
+tasks/
 
 # Plugins (reinstall via marketplace)
 plugins/
+
+# Browser extension data
+chrome/
 
 # IDE integration
 ide/
