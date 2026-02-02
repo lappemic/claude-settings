@@ -1,0 +1,1 @@
+../../stage-and-ship/references/merge-conflicts.md
