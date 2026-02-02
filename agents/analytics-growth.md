@@ -85,6 +85,9 @@ When optimizing SEO, provide:
 - OG image generation code if needed
 - Performance recommendations with specific metrics
 
+**Umami Cloud Configuration:**
+For configuring Umami Cloud (segments, cohorts, goals, funnels, journeys, reports), use the `/umami-cloud` skill which handles the API via browser automation.
+
 **Escalation:**
 If you need access to analytics dashboards or production metrics you cannot directly access, clearly state what data you need and why. If performance issues stem from infrastructure limitations beyond code changes, recommend appropriate infrastructure improvements.
 
