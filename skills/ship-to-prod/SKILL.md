@@ -12,6 +12,7 @@ This skill promotes a tested feature from `staging` to `main` by:
 1. Identify feature commits on staging (not yet on main)
 2. Verify commit scope (only feature-related changes)
 3. Create release branch from main with cherry-picked commits
+3.5. Diff cherry-picked files against staging to catch stale code regressions
 4. Run tests on the release branch (blocking)
 5. Open PR to main via `/pr` skill
 6. Optionally merge after user approval
@@ -132,6 +133,37 @@ Options:
 1. Skip this commit and continue
 2. Abort workflow
 ```
+
+## Phase 3.5: Post-Cherry-Pick Staging Diff
+
+**CRITICAL: Cherry-picks carry code from the point in history when the commit was made, NOT the latest staging state.** If later commits on staging modified the same files (e.g., an image fix after a copy rewrite), those fixes won't be included in the cherry-pick.
+
+After cherry-picking, diff every changed file against staging to catch regressions:
+
+```bash
+# List files changed by the cherry-pick(s)
+git diff --name-only origin/main...HEAD
+
+# For each changed file, diff against staging's version
+git diff HEAD origin/staging -- <file1> <file2> ...
+```
+
+If the diff reveals differences that look like regressions (old code that staging has already fixed), flag them:
+
+```
+⚠️ Post-cherry-pick diff found differences vs staging in these files:
+- components/landing/sections/HeroSection.tsx
+  → Still uses old <picture> element; staging uses <img src="/og-image.jpg">
+
+These may be regressions from stale cherry-picked code.
+
+Options:
+1. Apply the staging version for affected sections (recommended)
+2. Cherry-pick the missing fix commits as well
+3. Proceed as-is (differences are intentional)
+```
+
+If no regressions found, proceed silently.
 
 ## Phase 4: Test Verification
 
@@ -254,6 +286,7 @@ You're now on staging.
 ### Always Do
 
 - **Confirm commit scope** - Verify only feature changes are included
+- **Diff cherry-picked files against staging** - Cherry-picks carry code from their point in history, not the latest staging state. Always diff to catch stale code regressions
 - **Show what's being promoted** - Transparency in what goes to production
 - **Allow abort at any phase** - User can stop anytime
 - **Warn on empty cherry-picks** - Commit may already be on main
@@ -317,6 +350,7 @@ Options:
 | 1. Identify | `git log origin/main..origin/staging` | No |
 | 2. Verify | `git show --stat` | No |
 | 3. Branch | `git checkout -b release/...`, `git cherry-pick` | No |
+| 3.5. Staging Diff | `git diff HEAD origin/staging -- <files>` | **Yes** (if regressions found) |
 | 4. Test | `npm run lint`, `npm test` | **Yes** |
 | 5. PR | `git push`, `/pr` | No |
 | 6. Merge | `gh pr merge --squash` | User confirmation |
