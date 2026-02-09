@@ -71,7 +71,10 @@
       "Bash(git rm -rf .)",
       "Bash(eas whoami:*)",
       "Bash(eas build:*)",
-      "Bash(**/ralph-wiggum/**:*)"
+      "Bash(**/ralph-wiggum/**:*)",
+      "Bash(uv init:*)",
+      "Bash(uv add:*)",
+      "Bash(uv run:*)"
     ],
     "defaultMode": "acceptEdits"
   },
