@@ -2,6 +2,7 @@
 
 ### 1. Plan Mode Default
 - Enter plan mode for ANY non-trivial task (3+ steps or architectural decisions)
+- **Exception**: Skip plan mode during Ralph Loop sessions — execute tasks directly without entering plan mode
 - If something goes sideways, STOP and re-plan immediately - don't keep pushing
 - Use plan mode for verification steps, not just building
 - Write detailed specs upfront to reduce ambiguity
